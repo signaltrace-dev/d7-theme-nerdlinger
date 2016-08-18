@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
-  var theme_name = 'STARTER';
+  var theme_name = 'nerdlinger';
   var base_theme_path = '../zurb_foundation';
 
   var global_vars = {
