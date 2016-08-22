@@ -1,0 +1,21 @@
+
+
+.panel-pane{
+  padding: 0;
+  background: #fff;
+  .panel{
+    border: none;
+  }
+  .panel-header,
+  .pane-title{
+    padding: 15px 20px;
+    margin: 0;
+    border-bottom: 1px solid #dadada;
+    font-size: 15px;
+    background: #eeeeee;
+  }
+
+  .pane-content{
+    padding: 20px;
+  }
+}

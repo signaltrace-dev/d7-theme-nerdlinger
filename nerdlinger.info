@@ -28,11 +28,13 @@ base theme = zurb_foundation
 
 ; For CSS users, load the STARTER.css file:
 stylesheets[all][] = css/nerdlinger.css
+stylesheets[all][] = fonts/font-awesome/css/font-awesome.min.css
 
 ; Block loading of foundation.min.css from the base theme. This file should either
 ; not exist or be blank in your subtheme. See https://drupal.org/node/263967
 stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/foundation.min.css
+
 
 ; Foundation JavaScript.
 
@@ -60,6 +62,7 @@ scripts[] = js/app.min.js
 ;   <?php print render($page['header']); ?>
 
 regions[header]              = Header
+regions[subheader]           = Sub Header
 regions[help]                = Help
 regions[highlighted]         = Highlighted
 regions[featured]            = Featured

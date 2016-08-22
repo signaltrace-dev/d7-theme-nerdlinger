@@ -32,6 +32,8 @@
 // You may comment out bourbon if you don't want to use its library of mixins.
 // The theme will have compilation errors if Foundation is not imported.
 
+@import "base/settings";
+
 // Global Zurb Foundation variable overrides.
 @import "base/init";
 
@@ -87,7 +89,7 @@
 // Common file is where you place common utility classes to extend or
 // parametrics.
 // Optional.
-// @import "base/common";
+@import "base/common";
 
 // Fix for some Drupal CSS quirks (Drupalisms).
 @import "base/drupal";
@@ -107,6 +109,10 @@
 // Modules
 // @import "modules/block";
 // @import "modules/button";
+@import "modules/topbar";
+@import "modules/panel";
+
+
 
 // States
 // @import "states/collapse";
@@ -116,3 +122,5 @@
 
 // Older IE support
 // @import "vendor/ie";
+
+@import "font-awesome/font-awesome.scss";

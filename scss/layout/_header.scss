@@ -1,1 +1,13 @@
 // Non-modular or client styles for .l-header region.
+@media only screen and (min-width: 40.063em){
+  .l-header{
+    .contain-to-grid{
+      background: $branding-primary;
+    }
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+
+
+}

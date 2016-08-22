@@ -1,0 +1,131 @@
+.top-bar{
+  background: $branding-primary;
+  border-bottom: 1px solid #152835;
+
+  .logo{
+    line-height: $topbar-height;
+    padding-right: 10px;
+    img{
+      max-height: rem-calc(30);
+    }
+  }
+
+  .top-bar-section{
+    ul{
+      li{
+        background: $branding-primary;
+        padding-top: rem-calc(10);
+      }
+      &.dropdown li:not(.has-form) a:not(.button),
+      li:not(.has-form) a:not(.button){
+        background: $branding-primary;
+        line-height: normal;
+        $topbar-link-height: $topbar-height - rem-calc(10);
+        height: $topbar-link-height;
+        font-size: 16px;
+        padding: rem-calc(15);
+
+        padding-top: rem-calc(5);
+        border-top: 2px solid $branding-primary;
+
+        &.active{
+          background: $panel-color;
+          color: $primary-color;
+          border-top: 2px solid $primary-color;
+        }
+      }
+
+      &.dropdown{
+        li{
+          padding-top: 0;
+        }
+        li:not(.has-form) a:not(.button){
+          padding: rem-calc(10);
+          height: auto;
+          &.active{
+            border-top: 2px solid $branding-primary;
+            background: #333333;
+            color: #FFF;
+          }
+        }
+      }
+
+    }
+    .main-nav{
+      i{
+        font-size: 25px;
+      }
+    }
+
+    .user-nav{
+      .img-profile{
+        line-height: $topbar-height;
+        padding-right: 10px;
+        max-height: rem-calc(30);
+      }
+      ul.dropdown li:not(.has-form) a:not(.button),
+      li:not(.has-form) a:not(.button){
+        font-size: 14px;
+        i{
+          color: $secondary-color;
+          font-size: 16px;
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+
+}
+
+.navigation{
+  &.secondary{
+    height: $topbar-secondary-height;
+    min-height: $topbar-secondary-height;
+    background: $panel-color;
+    ul{
+      list-styapartmentapartmentle-type: none;
+      li{
+        display: inline-block;
+        float: left;
+        line-height: $topbar-secondary-height;
+        font-size: 13px;
+
+        a{
+          padding: 6px;
+          border: 1px solid $panel-color;
+          border-radius: $global-radius;
+
+          margin: 0 2px;
+          color:#4a4a4a;
+
+          &.active{
+            border: 1px solid $primary-color;
+            background: #fbfbfb;
+            color: #1d1d1d;
+          }
+          &:hover{
+            color: #1d1d1d;
+          }
+        }
+        &.node-add{
+          a{
+            background: $success-color;
+            border-color: $success-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contain-to-grid.secondary {
+  nav{
+    max-width: $row-width;
+    margin: 0 auto;
+    margin-bottom: $topbar-margin-bottom;
+  }
+  background: $panel-color;
+  border-bottom: 1px solid #d6d6d6;
+
+}
