@@ -86,6 +86,8 @@ function _nerdlinger_links($links, $prepend = NULL) {
  * @see _nerdlinger_links()
  */
 function _nerdlinger_render_link($link, $prepend = NULL) {
+  $path = current_path();
+
   // We only want to enable dropdowns for specific menus
   $dropdown_enabled = array(
     'menu-researchpipe-user-dropdown',
@@ -106,12 +108,11 @@ function _nerdlinger_render_link($link, $prepend = NULL) {
 
   $href = !empty($link['#href']) ? $link['#href'] : '';
 
-  if (!empty($link['#below']) && in_array($link_menu, $dropdown_enabled)) {
-    $link['#attributes']['class'][] = 'has-dropdown';
-  }
-
   // Render top level and make sure we have an actual link.
   if (!empty($href)) {
+    // Initially set if our current path is the current top level link
+    $is_active = $path == $href;
+
     $rendered_link = NULL;
 
     if (!isset($rendered_link)) {
@@ -135,25 +136,42 @@ function _nerdlinger_render_link($link, $prepend = NULL) {
       $link['#attributes']['class'][] = 'node-add';
     }
 
-    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link;
-    if (!empty($link['#below']) && in_array($link_menu, $dropdown_enabled)) {
+    $sub_links = '';
+    if (!empty($link['#below'])) {
+      // Add dropdown class to parent link if applicable
+      if(in_array($link_menu, $dropdown_enabled)){
+        $link['#attributes']['class'][] = 'has-dropdown';
+      }
+
       $sub_menu = '';
       // Build sub nav recursively.
       foreach ($link['#below'] as $sub_link) {
         $sub_href = !empty($sub_link['#href']) ? $sub_link['#href'] : NULL;
-        //$sub_link_menu = !empty($sub_link['#original_link']['menu_name']) ? $sub_link['#original_link']['menu_name'] : NULL;
 
-        if (!empty($sub_href)) {
+        // Check to see if the currently active page is in the current menu item's children
+        if($sub_href == $path){
+          $is_active = TRUE;
+        }
+
+        // Only add links as dropdowns if they're specified in dropdown_enabled.
+        if (!empty($sub_href) && in_array($link_menu, $dropdown_enabled)) {
           $rendered_sub_link = _nerdlinger_render_link($sub_link, $icon);
-          //$icon = !empty($icon_mappings[$sub_link_menu][$sub_href]) ? '<i class="'. $icon_mappings[$sub_link_menu][$sub_href] .'">&nbsp;</i>' : '';
-          //$rendered_sub_link = $icon . $rendered_sub_link;
           $sub_menu .= $rendered_sub_link;
         }
       }
 
-      $output .= '<ul class="dropdown">' . $sub_menu . '</ul>';
+      // Add dropdown markup to parent link if we want it
+      if (!empty($sub_menu) && in_array($link_menu, $dropdown_enabled)) {
+        $sub_links = '<ul class="dropdown">' . $sub_menu . '</ul>';
+      }
     }
-    $output .= '</li>';
+
+    // Add active class to the li element if the current page is this item or any of its children
+    if($is_active){
+      $link['#attributes']['class'][] = 'active';
+    }
+
+    $output .= '<li' . drupal_attributes($link['#attributes']) . '>' . $rendered_link . $sub_links . '</li>';
   }
 
   return $output;
