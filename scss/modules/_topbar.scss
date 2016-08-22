@@ -1,6 +1,19 @@
+$topbar-link-height: $topbar-height - rem-calc(10);
+
+.l-header{
+  .contain-to-grid{
+    border-bottom: 1px solid #000;
+
+    &.secondary{
+      border-bottom: 1px solid #9e9e9e;
+
+    }
+  }
+}
+
+// Main Top Bar Styling
 .top-bar{
   background: $branding-primary;
-  border-bottom: 1px solid #152835;
 
   .logo{
     line-height: $topbar-height;
@@ -11,52 +24,52 @@
   }
 
   .top-bar-section{
-    ul{
+    // Main Navigation
+    .main-nav{
       li{
         background: $branding-primary;
-        padding-top: rem-calc(10);
+        margin-top: rem-calc(10);
       }
-      &.dropdown li:not(.has-form) a:not(.button),
-      li:not(.has-form) a:not(.button){
-        background: $branding-primary;
-        line-height: normal;
-        $topbar-link-height: $topbar-height - rem-calc(10);
-        height: $topbar-link-height;
-        font-size: 16px;
-        padding: rem-calc(15);
 
-        padding-top: rem-calc(5);
-        border-top: 2px solid $branding-primary;
-
+      li:not(.has-form) {
         &.active{
-          background: $panel-color;
-          color: $primary-color;
-          border-top: 2px solid $primary-color;
-        }
-      }
+          a:not(.button){
+            background: $panel-color;
+            color: $primary-color;
+            border-top: 2px solid $primary-color;
 
-      &.dropdown{
-        li{
-          padding-top: 0;
+            position: relative;
+            top: 1px;
+          }
         }
-        li:not(.has-form) a:not(.button){
-          padding: rem-calc(10);
-          height: auto;
+        a:not(.button){
+          background: $branding-primary;
+          line-height: normal;
+          height: $topbar-link-height;
+          font-size: 16px;
+          padding: rem-calc(15);
+
+          padding-top: rem-calc(5);
+          border-top: 2px solid $branding-primary;
+
           &.active{
-            border-top: 2px solid $branding-primary;
-            background: #333333;
-            color: #FFF;
+            background: $panel-color;
+            color: $primary-color;
+            border-top: 2px solid $primary-color;
+
+            position: relative;
+            top: 1px;
+
           }
         }
       }
-
-    }
-    .main-nav{
       i{
         font-size: 25px;
       }
     }
+    // End Main Navigation
 
+    // User Navigation
     .user-nav{
       .img-profile{
         line-height: $topbar-height;
@@ -66,46 +79,85 @@
       ul.dropdown li:not(.has-form) a:not(.button),
       li:not(.has-form) a:not(.button){
         font-size: 14px;
+        background: $branding-primary;
+
         i{
           color: $secondary-color;
           font-size: 16px;
           padding-right: 8px;
         }
       }
+
+      ul.dropdown{
+        background: $branding-primary;
+
+        li{
+          padding-top: 0;
+          margin: 0;
+          background: $branding-primary;
+          &:hover{
+            background: #333333;
+          }
+          &:not(.has-form){
+            a:not(.button){
+              &:hover{
+                background: #333333;
+              }
+              line-height: normal;
+              padding: rem-calc(10);
+              background: $branding-primary;
+
+              height: auto;
+              &.active{
+                border-top: 2px solid $branding-primary;
+                background: #333333;
+                color: #FFF;
+              }
+            }
+          }
+        }
+
+      }
     }
+    // End User Navigation
+
   }
 
 }
 
+// Secondary Navigation
 .navigation{
   &.secondary{
     height: $topbar-secondary-height;
     min-height: $topbar-secondary-height;
     background: $panel-color;
     ul{
-      list-styapartmentapartmentle-type: none;
+      list-style-type: none;
       li{
         display: inline-block;
         float: left;
         line-height: $topbar-secondary-height;
         font-size: 13px;
+        &.active{
+          background: $tertiary-color;
+          a{
+            color: #FFF;
+          }
+          &.node-add{
+            a{
+              background: inherit;
+              border: none;
+              color: #fff;
+            }
+          }
+        }
 
         a{
           padding: 6px;
-          border: 1px solid $panel-color;
           border-radius: $global-radius;
 
           margin: 0 2px;
-          color:#4a4a4a;
-
-          &.active{
-            border: 1px solid $primary-color;
-            background: #fbfbfb;
-            color: #1d1d1d;
-          }
-          &:hover{
-            color: #1d1d1d;
-          }
+          color:$tertiary-color;
         }
         &.node-add{
           a{
@@ -126,6 +178,5 @@
     margin-bottom: $topbar-margin-bottom;
   }
   background: $panel-color;
-  border-bottom: 1px solid #d6d6d6;
-
+  border-bottom: 1px solid #9e9e9e;
 }
